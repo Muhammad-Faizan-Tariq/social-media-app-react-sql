@@ -14,7 +14,7 @@ import LeftBar from './components/leftbar';
 
 const App = () => {
 
-  const currentUser = false;
+  const currentUser = true;
   const ProtectedRoute = ({children}) => {
     if (!currentUser){
       return <Navigate to="/login"/>
