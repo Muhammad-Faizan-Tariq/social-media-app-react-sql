@@ -1,3 +1,4 @@
+import './style.scss'
 import {
   createBrowserRouter,
   Navigate,
@@ -24,7 +25,7 @@ const App = () => {
 
   const Layout = () => {
     return(
-      <div>
+      <div className="theme-dark">
         <Navbar/>
         <div style={{ display: "flex"}}>
             <LeftBar/>

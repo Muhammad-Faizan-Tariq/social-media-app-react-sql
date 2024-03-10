@@ -1,4 +1,7 @@
+@import "../../style.scss";
+
 .navbar{
+    @include themify($themes){
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6,8 +9,9 @@
     height: 50px;
     border-bottom: 1px solid lightgray;
     position: sticky;
-    background-color: white;
     top: 0;
+    background-color: themed("bg");
+    color: themed("textColor");
     .left{
         display: flex;
         align-items: center;
@@ -45,4 +49,5 @@
             }
         }
     }
+}
 }
