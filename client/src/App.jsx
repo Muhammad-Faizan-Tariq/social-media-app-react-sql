@@ -12,8 +12,12 @@ import Profile from './pages/profile'
 import Navbar from './components/navbar';
 import RightBar from './components/rightbar';
 import LeftBar from './components/leftbar';
+import { useContext } from 'react';
+import { DarkModeContext } from './context/darkModeContext';
 
 const App = () => {
+
+  const { darkMode } = useContext(DarkModeContext)
 
   const currentUser = true;
   const ProtectedRoute = ({children}) => {
@@ -25,7 +29,7 @@ const App = () => {
 
   const Layout = () => {
     return(
-      <div className="theme-dark">
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar/>
         <div style={{ display: "flex"}}>
             <LeftBar/>

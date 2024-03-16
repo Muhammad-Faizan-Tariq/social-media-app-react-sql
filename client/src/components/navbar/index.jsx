@@ -7,8 +7,12 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import { useContext } from "react";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
+
+  const {toggle} = useContext(DarkModeContext)
   return (
     <div className="navbar">
         <div className="left">
@@ -16,7 +20,7 @@ const Navbar = () => {
                 <span>Social Media</span>
             </Link>
             <HomeRoundedIcon/>
-            <ContrastRoundedIcon/>
+            <ContrastRoundedIcon onClick={toggle}/>
             <WidgetsRoundedIcon/>
             <div className="search">
             <SearchRoundedIcon/>
