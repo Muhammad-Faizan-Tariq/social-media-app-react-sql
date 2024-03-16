@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import "./style.scss"
+import { AuthContext } from "../../context/authContext";
 
 const Stories = () => {
+
+    const {currentUser} = useContext(AuthContext)
 
     //Dummy Data
     const stories = [
@@ -29,8 +33,8 @@ const Stories = () => {
   return (
     <div className="stories">
         <div className="story">
-            <img src="https://images.pexels.com/photos/13916254/pexels-photo-13916254.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" />
-            <span>Your Name</span>
+            <img src={currentUser.profilePic} alt="" />
+            <span>{currentUser.name}</span>
             <button>+</button>
         </div>
         {

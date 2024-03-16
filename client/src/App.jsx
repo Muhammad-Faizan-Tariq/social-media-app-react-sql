@@ -14,12 +14,13 @@ import RightBar from './components/rightbar';
 import LeftBar from './components/leftbar';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
+import { AuthContext } from './context/authContext';
 
 const App = () => {
 
   const { darkMode } = useContext(DarkModeContext)
-
-  const currentUser = true;
+  const {currentUser} = useContext(AuthContext);
+  
   const ProtectedRoute = ({children}) => {
     if (!currentUser){
       return <Navigate to="/login"/>

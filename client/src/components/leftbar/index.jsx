@@ -12,6 +12,8 @@ import Messages from "../../assets/10.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
 import Fund from "../../assets/13.png";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const menu = [
   {
@@ -73,13 +75,14 @@ const menu = [
 ]
 
 const LeftBar = () => {
+  const {currentUser} = useContext(AuthContext)
   return (
     <div className="leftbar">
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src="https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="user" />
-            <span>John Doe</span>
+            <img src={currentUser.profilePic} alt="user" />
+            <span>{currentUser.name}</span>
           </div>
             {menu.slice(0,6).map(item=>(
               <div className="item" key={item.label}>

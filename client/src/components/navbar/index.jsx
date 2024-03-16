@@ -9,10 +9,12 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
+import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
 
   const {toggle} = useContext(DarkModeContext)
+  const {currentUser} = useContext(AuthContext)
   return (
     <div className="navbar">
         <div className="left">
@@ -33,8 +35,8 @@ const Navbar = () => {
           <EmailRoundedIcon/>
           <NotificationsRoundedIcon/>
           <div className="user">
-            <img src="https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="user"/>
-            <span>John Doe</span>
+            <img src={currentUser.profilePic} alt="user"/>
+            <span>{currentUser.name}</span>
           </div>
         </div>
     </div>
