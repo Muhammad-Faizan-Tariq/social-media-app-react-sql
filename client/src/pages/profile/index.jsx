@@ -11,6 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import Posts from "../../components/posts";
+import Share from "../../components/share"
 
 const Profile = () => {
   // const {id} = usePararms()
@@ -22,7 +23,7 @@ const Profile = () => {
         <img src={currentUser.profilePic} alt="Profile Img" className="profile" />
       </div>
       <div className="profileContainer">
-        <div className="userInfo">
+        <div className="user-info">
           <div className="left">
             <a href="www.facebook.com">
               <FacebookTwoToneIcon fontSize="large" />
@@ -59,6 +60,7 @@ const Profile = () => {
             <MoreVertIcon />
           </div>
         </div>
+        <Share/>
         <Posts/>
       </div>
     </div>
