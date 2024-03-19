@@ -9,6 +9,9 @@
     background-color: themed("bg");
     color: themed("textColor");
     height: calc(100vh - 71px);
+    @include mobile{
+        display: none;
+    }
     &::-webkit-scrollbar{
         display: none;
     }

@@ -32,6 +32,13 @@
                 width: 400px;
                 background-color: transparent;
                 color: themed("textColor");
+                outline: none;
+                @include mobile{
+                    display: none;
+                }
+                @include tablet{
+                    width: 200px;
+                }
             }
         }
     }
@@ -39,11 +46,17 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        @include mobile{
+            display: none;
+        }
         .user{
             display: flex;
             align-items: center;
             gap: 10px;
             font-weight: 500;
+            @include mobile{
+                display: none;
+            }
             img{
                 height: 30px;
                 width: 30px;
