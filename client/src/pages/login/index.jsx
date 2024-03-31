@@ -1,13 +1,31 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./style.scss"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../../context/authContext"
 
 const Login = () => {
   const {login} = useContext(AuthContext);
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  })
+  const [error, setError] = useState(null)
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    login()
+  const handleChange = (e) => {
+      const {name, value} = e.target;
+      setInputs((prev)=>({...prev, [name]:value}))
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await login(inputs)
+      navigate("/")
+    } catch (error) {
+      console.log("Login Error:", error.response);
+      setError(error.response.data)
+    }
   }
   return (
     <div className="login">
@@ -23,8 +41,9 @@ const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <form>
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
+            <input type="text" placeholder="username" name="username" onChange={handleChange}/>
+            <input type="password" placeholder="password" name="password" onChange={handleChange} />
+            {error && <div>({error})</div>}
             <button onClick={handleLogin}>login</button>
           </form>
         </div>
