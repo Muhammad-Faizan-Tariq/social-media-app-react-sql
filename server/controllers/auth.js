@@ -54,7 +54,7 @@ export const login = (req, res) => {
         const checkPassword = bcrypt.compareSync(req.body.password, data[0].password)
         if (!checkPassword) {
             console.log("Wrong Passowrd", data[0].password);
-            return res.json("Wrong credentials!")
+            return res.status(400).json("Wrong credentials!")
         }
 
         const token = jwt.sign({id:data[0].id}, "secretkey")
