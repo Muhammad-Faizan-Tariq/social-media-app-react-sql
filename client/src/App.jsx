@@ -15,11 +15,13 @@ import LeftBar from './components/leftbar';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const App = () => {
 
   const { darkMode } = useContext(DarkModeContext)
   const {currentUser} = useContext(AuthContext);
+  const queryClient = new QueryClient()
   
   const ProtectedRoute = ({children}) => {
     if (!currentUser){
@@ -30,6 +32,7 @@ const App = () => {
 
   const Layout = () => {
     return(
+      <QueryClientProvider client={queryClient}>
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar/>
         <div style={{ display: "flex"}}>
@@ -40,6 +43,7 @@ const App = () => {
             <RightBar/>
         </div>
       </div>
+      </QueryClientProvider>
     )
   }
 

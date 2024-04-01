@@ -1,5 +1,7 @@
 import "./style.scss"
 import Post from '../post';
+import { useQuery } from "react-query";
+import { makeRequest } from "../../../axios";
 
 const Posts = () => {
 
@@ -23,6 +25,12 @@ const Posts = () => {
       desc: "Tenetur iste voluptates dolorem rem commodi voluptate pariatur, voluptatum, laboriosam consequatur enim nostrum cumque! Maiores a nam non adipisci minima modi tempore.",
     },
   ];
+
+  const {isLoading, error, data} = useQuery(["posts", ()=>{
+    makeRequest.get("posts").then((res)=>{
+      res.data;
+    })
+  }])
 
   return (
     <div className='posts'>
